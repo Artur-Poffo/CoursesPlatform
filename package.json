@@ -1,0 +1,14 @@
+{
+  "name": "coursesplatform",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Platform of courses",
+  "main": "index.js",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "author": "Artur Poffo",
+  "license": "ISC"
+}
