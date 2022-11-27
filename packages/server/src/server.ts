@@ -18,4 +18,4 @@ app.use(cors())
 app.use(express.json())
 app.use("/api", ApiRoutes)
 
-app.listen(process.env.PORT || 3000, () => console.log("Server Running!"))
+app.listen(process.env.PORT || 3001, () => console.log("Server Running!"))

@@ -1,6 +1,7 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import User from "../Models/UserModel";
 
+import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
 const SignUp = async (req: Request, res: Response) => {
@@ -47,13 +48,51 @@ const SignIn = async (req: Request, res: Response) => {
     const Compare = bcrypt.compareSync(VerifyUser.password, searchEmail.password)
 
     if (Compare === true) {
-      res.status(200).json({ success: true, msg: "Logged" })
+      const secret = process.env.SECRET
+
+      const token = jwt.sign({ id: searchEmail._id }, `${secret}`)
+
+      res.status(200).json({ success: true, token })
     } else {
-      res.status(401).json({ success: false, msg: "Error on Login" })
+      res.status(422).json({ success: false, msg: "Error on Login" })
     }
   } else {
-    res.status(401).json({ success: false, msg: "Error on Login" })
+    res.status(422).json({ success: false, msg: "Error on Login" })
   }
 }
 
-export default { SignUp, SignIn }
+const getUserData = async (req: Request, res: Response) => {
+  const { id } = req.params
+  let user;
+
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    user = await User.findById(id, '-password')
+  }
+
+  if (!user) {
+    return res.status(404).json({ success: false, msg: "User not found" })
+  }
+
+  res.status(200).json({ success: true, user })
+}
+
+const checkToken = (req: Request, res: Response, next: NextFunction) => {
+  const authHeader: any = req.headers['authorization']
+  const token = authHeader && authHeader.split(" ")[1]
+
+  if (!token) {
+    res.status(401).json({ success: false, msg: "Access Denied" })
+  }
+
+  try {
+    const secret: any = process.env.SECRET
+
+    jwt.verify(token, secret)
+
+    next()
+  } catch (err) {
+    res.status(401).json({ success: false, msg: `Invalid Token ${err}` })
+  }
+}
+
+export default { SignUp, SignIn, getUserData, checkToken }
