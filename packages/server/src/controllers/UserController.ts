@@ -52,7 +52,9 @@ const SignIn = async (req: Request, res: Response) => {
 
       const token = jwt.sign({ id: searchEmail._id }, `${secret}`)
 
-      res.status(200).json({ success: true, token })
+      const { email, userName, perfilImage, about, courses } = searchEmail
+
+      res.status(200).json({ success: true, token, user: { email, userName, perfilImage, about, courses } })
     } else {
       res.status(422).json({ success: false, msg: "Error on Login" })
     }
