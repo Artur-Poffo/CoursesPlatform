@@ -77,7 +77,7 @@ const getUserData = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     res.status(200).json({ success: true, user });
 });
 const checkToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+    const authHeader = req.headers['Authorization'];
     const token = authHeader && authHeader.split(" ")[1];
     if (!token) {
         res.status(401).json({ success: false, msg: "Access Denied" });
