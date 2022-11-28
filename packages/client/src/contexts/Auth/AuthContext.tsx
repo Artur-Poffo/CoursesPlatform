@@ -33,9 +33,9 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     if (token) {
       const json = jwt.decode(token) as { id: string }
 
-      api.post(`/api/getUserData/${json.id}`)
+      api.get(`/api/getUserData/${json.id}`)
         .then(response => setUser(response.data.user))
-        .catch(err => console.log(err))
+        .catch(err => console.log("Error on getUserData: " + err))
     }
   }, [])
 

@@ -79,17 +79,17 @@ const getUserData = async (req: Request, res: Response) => {
 }
 
 const checkToken = (req: Request, res: Response, next: NextFunction) => {
-  const authHeader: any = req.headers['Authorization']
-  const token = authHeader && authHeader.split(" ")[1]
+  const authHeader: any = req.header('Authorization')
+  const token: string = authHeader && authHeader.split(" ")[1]
 
   if (!token) {
-    res.status(401).json({ success: false, msg: "Access Denied" })
+    return res.status(401).json({ success: false, msg: "Access Denied" })
   }
 
   try {
     const secret: any = process.env.SECRET
 
-    jwt.verify(token, secret)
+    jwt.verify(token as string, secret as string)
 
     next()
   } catch (err) {
