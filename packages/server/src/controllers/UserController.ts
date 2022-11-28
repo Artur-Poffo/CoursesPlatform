@@ -79,7 +79,7 @@ const getUserData = async (req: Request, res: Response) => {
 }
 
 const checkToken = (req: Request, res: Response, next: NextFunction) => {
-  const authHeader: any = req.headers['authorization']
+  const authHeader: any = req.headers['Authorization']
   const token = authHeader && authHeader.split(" ")[1]
 
   if (!token) {

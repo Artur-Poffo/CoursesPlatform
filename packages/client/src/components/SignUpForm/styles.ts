@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   width: 400px;
-  height: 400px;
-  padding: 20px 0;
+  padding: 50px 0;
   background-color: var(--background);
   box-shadow: 0px 3px 10px #000;
   border-radius: 5px;
@@ -32,6 +31,13 @@ export const Form = styled.form`
     &:hover {
       transform: translateY(-4px);
     }
+  }
+
+  a {
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: underline;
   }
 `
 
