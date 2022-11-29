@@ -37,7 +37,7 @@ const app = (0, express_1.default)();
     .then(() => console.log("MongoDB Connected!"))
     .catch(() => console.log("MongoDB error on connect!!!"));
 const corsOptions = {
-    origin: 'https://courseplatform.onrender.com',
+    origin: 'https://coursesplatform.vercel.app',
     optionsSuccessStatus: 200
 };
 app.use((0, cors_1.default)(corsOptions));
