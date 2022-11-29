@@ -9,9 +9,9 @@ export default function Home() {
   const { user } = useContext(AuthContext)
 
   return (
-    <div>
+    <>
       <h1>Hello {user?.userName}</h1>
-    </div>
+    </>
   )
 }
 
