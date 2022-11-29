@@ -15,7 +15,7 @@ connect(process.env.MONGO_URI || "mongodb://localhost/test")
   .catch(() => console.log("MongoDB error on connect!!!"))
 
 const corsOptions = {
-  origin: 'https://courseplatform.onrender.com',
+  origin: 'https://coursesplatform.vercel.app',
   optionsSuccessStatus: 200
 }
 
