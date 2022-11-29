@@ -21,7 +21,7 @@ export const Btn = styled.div`
   cursor: pointer;
   z-index: 999;
 
-  @media (max-width: 520px) {
+  @media (max-width: 605px) {
     display: flex;
   }
 
@@ -45,7 +45,7 @@ export const ListContainer = styled.div<IList>`
   z-index: 998;
   transition: all .5s ease;
 
-  @media (max-width: 520px) {
+  @media (max-width: 605px) {
     display: flex;
   }
 `

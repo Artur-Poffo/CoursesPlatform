@@ -5,13 +5,14 @@ export const Nav = styled.nav`
   width: 100vw;
   height: 7vh;
   background-color: var(--background);
-  box-shadow: 3px 3px 10px #000;
+  box-shadow: 1px 1px 10px #000;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 100px;
   z-index: 999;
 
-  @media (max-width: 520px) {
+  @media (max-width: 605px) {
     display: none;
   }
 `
