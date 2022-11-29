@@ -36,7 +36,11 @@ const app = (0, express_1.default)();
 (0, mongoose_1.connect)(process.env.MONGO_URI || "mongodb://localhost/test")
     .then(() => console.log("MongoDB Connected!"))
     .catch(() => console.log("MongoDB error on connect!!!"));
-app.use((0, cors_1.default)());
+const corsOptions = {
+    origin: 'https://courseplatform.onrender.com',
+    optionsSuccessStatus: 200
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 app.use("/api", ApiRoutes_1.default);
 app.listen(process.env.PORT || 3001, () => console.log("Server Running!"));
