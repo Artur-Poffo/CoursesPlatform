@@ -14,12 +14,7 @@ connect(process.env.MONGO_URI || "mongodb://localhost/test")
   .then(() => console.log("MongoDB Connected!"))
   .catch(() => console.log("MongoDB error on connect!!!"))
 
-const corsOptions = {
-  origin: 'https://coursesplatform.vercel.app',
-  optionsSuccessStatus: 200
-}
-
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json())
 app.use("/api", ApiRoutes)
 

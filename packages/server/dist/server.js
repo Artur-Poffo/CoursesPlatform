@@ -36,11 +36,7 @@ const app = (0, express_1.default)();
 (0, mongoose_1.connect)(process.env.MONGO_URI || "mongodb://localhost/test")
     .then(() => console.log("MongoDB Connected!"))
     .catch(() => console.log("MongoDB error on connect!!!"));
-const corsOptions = {
-    origin: 'https://coursesplatform.vercel.app',
-    optionsSuccessStatus: 200
-};
-app.use((0, cors_1.default)(corsOptions));
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use("/api", ApiRoutes_1.default);
 app.listen(process.env.PORT || 3001, () => console.log("Server Running!"));
