@@ -14,7 +14,12 @@ connect(process.env.MONGO_URI || "mongodb://localhost/test")
   .then(() => console.log("MongoDB Connected!"))
   .catch(() => console.log("MongoDB error on connect!!!"))
 
-app.use(cors())
+const corsOptions = {
+  origin: 'https://courseplatform.onrender.com',
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use("/api", ApiRoutes)
 
