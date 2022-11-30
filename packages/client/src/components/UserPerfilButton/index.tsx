@@ -5,10 +5,10 @@ import { useContext } from "react"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 
 const UserPerfilButton: React.FC = () => {
-  const { user, isAuthenticated } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
 
   return (
-    <Container isAuthenticated={isAuthenticated} >
+    <Container>
       <Link href={"/Profile"} >
         <Image img={user?.perfilImage} />
       </Link>

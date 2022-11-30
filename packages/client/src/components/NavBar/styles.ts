@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
-export const Nav = styled.nav`
+interface Props {
+  isAuthenticated: boolean
+}
+
+export const Nav = styled.nav<Props>`
   position: fixed;
   width: 100vw;
   height: 7vh;
   background-color: var(--background);
   box-shadow: 1px 1px 10px #000;
-  display: flex;
+  display: ${props => props.isAuthenticated ? "flex" : "none"};
   align-items: center;
   justify-content: space-between;
   padding: 0 100px;

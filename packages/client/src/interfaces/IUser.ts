@@ -3,5 +3,6 @@ export interface IUser {
   email: string
   about?: string
   perfilImage?: string
+  headerImage?: string
   courses?: Array<string>
 }

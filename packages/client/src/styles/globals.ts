@@ -44,7 +44,7 @@ export default createGlobalStyle`
 
 :root {
   --background: #111111;
-  --contrast: #141920;
+  --contrast: #202024;
   --primary: #996DFF;
   --secondary: #b6b7f6;
   --text: #B4B4B4;

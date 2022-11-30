@@ -4,12 +4,7 @@ interface PerfilImage {
   img: string | undefined
 }
 
-interface Props {
-  isAuthenticated: boolean
-}
-
-export const Container = styled.div<Props>`
-  display: ${props => props.isAuthenticated ? "block" : "none"};
+export const Container = styled.div`
   width: 53px;
   height: 53px;
   border: 1px solid var(--primary);

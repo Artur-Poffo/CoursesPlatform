@@ -1,13 +1,16 @@
 import { Btn } from "./styles"
 import ListMobile from "./ListMobile"
-import { useState } from "react"
+
+import { useState, useContext } from "react"
+import { AuthContext } from "../../contexts/Auth/AuthContext"
 
 const MobileMenu: React.FC = () => {
   const [show, setShow] = useState(false)
+  const { isAuthenticated } = useContext(AuthContext)
 
   return (
     <>
-      <Btn onClick={() => setShow(!show)} >
+      <Btn isAuthenticated={isAuthenticated} onClick={() => setShow(!show)} >
         <div />
         <div />
         <div />

@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
+interface Props {
+  isAuthenticated: boolean
+}
+
 interface IList {
   show: boolean
 }
 
-export const Btn = styled.div`
+export const Btn = styled.div<Props>`
   width: 43px;
   height: 43px;
   border-radius: 50%;
@@ -22,7 +26,7 @@ export const Btn = styled.div`
   z-index: 999;
 
   @media (max-width: 605px) {
-    display: flex;
+    display: ${props => props.isAuthenticated ? "flex" : "none"};
   }
 
   div {
