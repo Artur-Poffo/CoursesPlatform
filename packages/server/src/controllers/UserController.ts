@@ -63,6 +63,25 @@ const SignIn = async (req: Request, res: Response) => {
   }
 }
 
+const updateUserData = async (req: Request, res: Response) => {
+  const id = req.params.id
+
+  const DataToUpdate = {
+    userName: req.body.userName,
+    about: req.body.about,
+    perfilImage: req.body.perfilImage,
+    headerImage: req.body.headerImage,
+  }
+
+  try {
+    const updatedDatas = await User.updateOne({ _id: id }, DataToUpdate)
+
+    res.status(200).json({ success: true, msg: "Data Updated", DataUpdated: DataToUpdate })
+  } catch (err) {
+    res.status(500).json({ success: false, msg: "Error on Update: " + err })
+  }
+}
+
 const getUserData = async (req: Request, res: Response) => {
   const { id } = req.params
   let user;
@@ -97,4 +116,4 @@ const checkToken = (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
-export default { SignUp, SignIn, getUserData, checkToken }
+export default { SignUp, SignIn, updateUserData, getUserData, checkToken }
