@@ -10,10 +10,13 @@ import { SignUpParams } from "../../interfaces/SignUpParams";
 
 import { IUser } from "../../interfaces/IUser";
 
+import { IUpdateUser } from "../../interfaces/UpdateUserParams"
+
 interface AuthContextData {
   isAuthenticated: boolean,
   SignIn: (data: SignInParams) => Promise<void>,
   SignUp: (data: SignUpParams) => Promise<void>,
+  UpdateUser: (data: SignUpParams) => Promise<void>,
   user: IUser | null
 }
 
@@ -59,8 +62,23 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     Router.push("/SignIn")
   }
 
+  async function UpdateUser(Data: IUpdateUser) {
+    const { 'courses.token': token } = parseCookies()
+
+    if (token) {
+      const json = jwt.decode(token) as { id: string }
+
+      api.patch(`/api/updateUserData/${json.id}`, Data)
+        .then(async (Response) => {
+          await Router.push("/Profile")
+          await Router.reload()
+        })
+        .catch(err => console.log("Error on Update: " + err))
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, SignIn, SignUp, user }}>
+    <AuthContext.Provider value={{ isAuthenticated, SignIn, SignUp, UpdateUser, user }}>
       {children}
     </AuthContext.Provider>
   )

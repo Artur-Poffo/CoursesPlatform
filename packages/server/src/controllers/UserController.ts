@@ -76,7 +76,7 @@ const updateUserData = async (req: Request, res: Response) => {
   try {
     const updatedDatas = await User.updateOne({ _id: id }, DataToUpdate)
 
-    res.status(200).json({ success: true, msg: "Data Updated", DataUpdated: DataToUpdate })
+    res.status(200).json({ success: true, msg: "Data Updated" })
   } catch (err) {
     res.status(500).json({ success: false, msg: "Error on Update: " + err })
   }
