@@ -54,8 +54,8 @@ const SignIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (Compare === true) {
             const secret = process.env.SECRET;
             const token = jsonwebtoken_1.default.sign({ id: searchEmail._id }, `${secret}`);
-            const { email, userName, perfilImage, about, courses } = searchEmail;
-            res.status(200).json({ success: true, token, user: { email, userName, perfilImage, about, courses } });
+            const { email, userName, perfilImage, headerImage, about, courses } = searchEmail;
+            res.status(200).json({ success: true, token, user: { email, userName, perfilImage, headerImage, about, courses } });
         }
         else {
             res.status(422).json({ success: false, msg: "Error on Login" });
