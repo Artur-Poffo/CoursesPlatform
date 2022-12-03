@@ -16,7 +16,7 @@ interface AuthContextData {
   isAuthenticated: boolean,
   SignIn: (data: SignInParams) => Promise<void>,
   SignUp: (data: SignUpParams) => Promise<void>,
-  UpdateUser: (data: SignUpParams) => Promise<void>,
+  UpdateUser: (data: IUpdateUser) => Promise<void>,
   user: IUser | null
 }
 
