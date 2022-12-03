@@ -9,6 +9,7 @@ const ClassesController_1 = __importDefault(require("../controllers/ClassesContr
 const routes = (0, express_1.Router)();
 routes.get("/", (req, res) => res.status(200).json({ msg: "Production Success" }));
 routes.get("/getUserData/:id", UserController_1.default.checkToken, UserController_1.default.getUserData);
+routes.patch("/updateUserData/:id", UserController_1.default.checkToken, UserController_1.default.updateUserData);
 routes.post("/SignIn", UserController_1.default.SignIn);
 routes.post("/SignUp", UserController_1.default.SignUp);
 routes.get("/listCourses", ClassesController_1.default.ListCourses);

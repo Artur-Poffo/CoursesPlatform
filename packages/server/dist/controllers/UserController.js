@@ -65,6 +65,22 @@ const SignIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(422).json({ success: false, msg: "Error on Login" });
     }
 });
+const updateUserData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const DataToUpdate = {
+        userName: req.body.userName,
+        about: req.body.about,
+        perfilImage: req.body.perfilImage,
+        headerImage: req.body.headerImage,
+    };
+    try {
+        const updatedDatas = yield UserModel_1.default.updateOne({ _id: id }, DataToUpdate);
+        res.status(200).json({ success: true, msg: "Data Updated", DataUpdated: DataToUpdate });
+    }
+    catch (err) {
+        res.status(500).json({ success: false, msg: "Error on Update: " + err });
+    }
+});
 const getUserData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     let user;
@@ -91,4 +107,4 @@ const checkToken = (req, res, next) => {
         res.status(401).json({ success: false, msg: `Invalid Token ${err}` });
     }
 };
-exports.default = { SignUp, SignIn, getUserData, checkToken };
+exports.default = { SignUp, SignIn, updateUserData, getUserData, checkToken };
