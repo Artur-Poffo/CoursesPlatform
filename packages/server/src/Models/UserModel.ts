@@ -6,6 +6,7 @@ export interface IUser {
   password: string
   about?: string
   perfilImage?: string
+  headerImage?: string
   courses?: Array<string>
 }
 
@@ -15,6 +16,7 @@ const UserSchema = new Schema<IUser>({
   password: { type: String, required: true },
   about: { type: String, required: false },
   perfilImage: { type: String, required: false },
+  headerImage: { type: String, required: false },
   courses: { type: Array, required: false }
 })
 
