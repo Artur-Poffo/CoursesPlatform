@@ -5,7 +5,8 @@
   "main": "src/server.ts",
   "scripts": {
     "start_dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "build": "tsc"
   },
   "author": "Artur Poffo",
   "license": "ISC",
