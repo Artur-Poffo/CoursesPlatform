@@ -52,7 +52,8 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
 
     setUser(user)
 
-    Router.push("/")
+    await Router.push("/")
+    await Router.reload()
   }
 
   async function SignUp(data: SignUpParams) {
