@@ -5,7 +5,7 @@ import ClassesController from '../controllers/ClassesController';
 
 const routes = Router()
 
-routes.get("/", (req, res) => res.status(200).json({ msg: "Production Success" }))
+routes.get("/", (req, res) => res.status(200).json({ msg: "Production Deploy Success" }))
 
 routes.get("/getUserData/:id", UserController.checkToken, UserController.getUserData)
 

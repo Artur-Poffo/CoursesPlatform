@@ -5,7 +5,7 @@ export function getAPIClient(ctx?: any) {
   const { 'courses.token': token } = parseCookies()
 
   const api = axios.create({
-    baseURL: "https://courseplatform.onrender.com"
+    baseURL: "https://coursesplatform.up.railway.app"
   })
 
   if (token) {
