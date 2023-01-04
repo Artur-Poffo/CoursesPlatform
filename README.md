@@ -14,3 +14,5 @@ Project that simulates an online course platform, with user authentication and u
 - React.js
 - Next.js
 - Styled-Components
+
+**PROJECT IDEA FOR THE FUTURE, THIS IS JUST THE BEGINNING OF THE PROJECT**
